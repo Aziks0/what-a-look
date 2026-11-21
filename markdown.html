@@ -1,0 +1,33 @@
+<!--
+  SPDX-FileCopyrightText: 2026 Benjamin DIDIER <contact@aziks.aleeas.com>
+
+  SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Markdown Preview</title>
+  <style>
+    body {
+      max-width: max-content !important;
+      margin: auto !important;
+    }
+    .markdown-body {
+      box-sizing: border-box;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+  </style>
+  <style>
+    {{ GITHUB_MARKDOWN_CSS }}
+  </style>
+</head>
+<body class="markdown-body">
+  <article class="markdown-body">
+    {{ GITHUB_MARKDOWN_BODY }}
+  </article>
+</body>
+</html>

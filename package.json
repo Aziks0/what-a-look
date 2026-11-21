@@ -32,5 +32,8 @@
   },
   "peerDependencies": {
     "typescript": "^7"
+  },
+  "dependencies": {
+    "github-markdown-css": "^5.9.0"
   }
 }
