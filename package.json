@@ -24,6 +24,9 @@
     "build": "bun build --production --target node ./src/index.ts --outdir ./dist",
     "prepack": "bun install --production; bun run build"
   },
+  "files": [
+    ""
+  ],
   "bin": {
     "what-a-look": "dist/index.js"
   },
