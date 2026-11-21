@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2026 Benjamin DIDIER <contact@aziks.aleeas.com>
+#
+# SPDX-License-Identifier: CC0-1.0
+
+version = 1
+
+[[annotations]]
+path = "package.json"
+SPDX-FileCopyrightText = "2026 Benjamin DIDIER <contact@aziks.aleeas.com>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "Bun.lock"
+SPDX-FileCopyrightText = "2026 Benjamin DIDIER <contact@aziks.aleeas.com>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "biome.json"
+SPDX-FileCopyrightText = "2026 Benjamin DIDIER <contact@aziks.aleeas.com>"
+SPDX-License-Identifier = "CC0-1.0"

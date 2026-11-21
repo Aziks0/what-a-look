@@ -1,0 +1,36 @@
+{
+  "name": "what-a-look",
+  "version": "0.1.0",
+  "description": "Generate an html file to preview your GitHub markdown files.",
+  "license": "GPL-3.0-or-later",
+  "author": {
+    "name": "Benjamin DIDIER",
+    "email": "contact@aziks.aleeas.com"
+  },
+  "repository": {
+    "url": "https://github.com/Aziks0/what-a-look"
+  },
+  "keywords": [
+    "markdown",
+    "cli",
+    "gfm",
+    "github"
+  ],
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "typecheck": "bun check",
+    "fmt": "bunx biome check --fix",
+    "build": "bun build --production --target node ./src/index.ts --outdir ./dist"
+  },
+  "bin": {
+    "what-a-look": "dist/index.js"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.7",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  }
+}
