@@ -21,7 +21,8 @@
   "scripts": {
     "typecheck": "bun check",
     "fmt": "bunx biome check --fix",
-    "build": "bun build --production --target node ./src/index.ts --outdir ./dist"
+    "build": "bun build --production --target node ./src/index.ts --outdir ./dist",
+    "prepack": "bun install --production; bun run build"
   },
   "bin": {
     "what-a-look": "dist/index.js"
