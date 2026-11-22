@@ -37,12 +37,10 @@ const generateDarkStyles = (): string => {
  * @param forceDark Should we force the styles to use dark mode?
  * @returns The css styles.
  */
-const getStyles = (forceDark: boolean): string => {
+export const getStyles = (forceDark: boolean): string => {
   if (forceDark) {
     return generateDarkStyles();
   }
 
   return styles;
 };
-
-export default getStyles;

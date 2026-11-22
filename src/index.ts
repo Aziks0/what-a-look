@@ -7,9 +7,7 @@
 import path from "node:path";
 import utils from "node:util";
 
-import htmlPage from "./html.ts";
-import getStyles from "./styles.ts";
-
+import { intoHtml } from "./html.ts";
 import { exitError, readFile, toMessage, writeFile } from "./utils.ts";
 
 const helpMessage = `what-a-look, get an html file to preview your GitHub markdown files.
@@ -21,45 +19,6 @@ Options:
   -o, --out        Out file. Default is to print to stdout.
       --force-dark Force the preview to use dark-mode.
   -h, --help       Print help.`;
-
-const intoGithubMarkdown = async (markdown: string): Promise<string> => {
-  try {
-    const response = await fetch("https://api.github.com/markdown", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ mode: "gfm", text: markdown }),
-    });
-
-    if (!response.ok) {
-      throw `${response.status} ${await response.text()}`;
-    }
-
-    return await response.text();
-  } catch (error) {
-    const message = error instanceof Error ? error.message : error;
-
-    return exitError(`Failed to fetch GitHub API: ${message}`);
-  }
-};
-
-const intoHtml = async (
-  markdown: string,
-  forceDark: boolean,
-): Promise<string> => {
-  const githubMarkdown = await intoGithubMarkdown(markdown);
-
-  const htmlWithMarkdown = htmlPage.replace(
-    "{{ GITHUB_MARKDOWN_BODY }}",
-    githubMarkdown,
-  );
-
-  return htmlWithMarkdown.replace(
-    "{{ GITHUB_MARKDOWN_CSS }}",
-    getStyles(forceDark),
-  );
-};
 
 const parseArgs = () => {
   try {
