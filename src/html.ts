@@ -6,6 +6,7 @@
 
 import _htmlPage from "../markdown.html" with { type: "text" };
 
+import { sanitizeNewlines } from "./markdown.ts";
 import { getStyles } from "./styles.ts";
 import { exitError } from "./utils.ts";
 
@@ -38,7 +39,8 @@ export const intoHtml = async (
   markdown: string,
   forceDark: boolean,
 ): Promise<string> => {
-  const githubMarkdown = await intoGithubMarkdown(markdown);
+  const sanitizedMarkdown = sanitizeNewlines(markdown);
+  const githubMarkdown = await intoGithubMarkdown(sanitizedMarkdown);
 
   const htmlWithMarkdown = htmlPage.replace(
     "{{ GITHUB_MARKDOWN_BODY }}",
