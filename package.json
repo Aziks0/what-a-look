@@ -1,6 +1,6 @@
 {
   "name": "what-a-look",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Generate an html file to preview your GitHub markdown files.",
   "license": "GPL-3.0-or-later",
   "author": {
