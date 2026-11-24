@@ -14,7 +14,7 @@ hooks = [
     name = "bun check",
     language = "system",
     entry = "bun check",
-    files = { glob = ["src", "package.json", "tsconfig.json"] },
+    files = { glob = ["src/**", "package.json", "tsconfig.json"] },
     include_deleted = true,
     pass_filenames = false,
     fail_fast = true,
