@@ -17,6 +17,7 @@ enum Markdown {
   List,
   BlankLine,
   Fontnote,
+  LinkReference,
 }
 
 const hasTrailingNewline = (type: Markdown): boolean =>
@@ -31,6 +32,8 @@ const isHeading = (line: string): boolean => line.startsWith("#");
 const isList = (line: string): boolean => /^(-|\*|\+|\d+\.)\s/m.test(line);
 
 const isCodeBlock = (line: string): boolean => line.startsWith("```");
+
+const isLinkReference = (line: string): boolean => /^\[.*?\]:/m.test(line);
 
 const isFootnote = (line: string): boolean => /^\[\^\d+\]:/m.test(line);
 
@@ -53,6 +56,7 @@ const getType = (line: string): Markdown => {
   if (isCodeBlock(trimmed)) return Markdown.CodeBlock;
   if (isList(trimmed)) return Markdown.List;
   if (isFootnote(trimmed)) return Markdown.Fontnote;
+  if (isLinkReference(trimmed)) return Markdown.LinkReference;
   return Markdown.Paragraph;
 };
 
@@ -139,11 +143,11 @@ const sanitize = (lines: string[]): string[] => {
       continue;
     }
 
-    // Consider footnotes like paragraph, just with a leading newline if needed
-    // and a space for future paragraphs.
+    // Consider footnotes and link references like paragraphs, just with a
+    // leading newline if needed and a space for future paragraphs.
     // NOTE: This is not how GitHub treats them, but we don't really care
     // anymore, we're way past that.
-    if (type === Markdown.Fontnote) {
+    if (type === Markdown.Fontnote || type === Markdown.LinkReference) {
       addTrailingNewlineIfNeeded();
 
       sanitizedLines.push(`${line} `);
